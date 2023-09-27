@@ -11,5 +11,6 @@ Rails.application.routes.draw do
 
   get "intro", to: "exercises#intro", as: "intro"
   get "directive", to: "exercises#directive", as: "directive"
+  get "v_bind", to: "exercises#v_bind", as: "v_bind"
 
 end

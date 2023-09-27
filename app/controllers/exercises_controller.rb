@@ -13,9 +13,8 @@ end
   end
 
   def directive
-    respond_to do |format|
-      format.html { render :directive }
-    end
   end
 
+  def v_bind
+  end
 end
