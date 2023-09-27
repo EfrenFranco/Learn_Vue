@@ -6,6 +6,7 @@ Rails.application.routes.draw do
 
   root "exercises#index"
 
-  get "/exercises", to: "exercises#index"
+  get "intro", to: "exercises#intro", as: "intro"
+  get "directive", to: "exercises#directive", as: "directive"
 
 end
