@@ -6,6 +6,9 @@ Rails.application.routes.draw do
 
   root "exercises#index"
 
+  resources :exercises
+
+
   get "intro", to: "exercises#intro", as: "intro"
   get "directive", to: "exercises#directive", as: "directive"
 
