@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Count Moose</title>
+    <style>
+      #app {
+        border: dashed black 1px;
+        width: 400px;
+        padding: 20px;
+      }
+      img {
+        width: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Count the moose</h1>
+    <div id="app">
+      <img src="https://www.w3schools.com/vue/img_moose.jpg" width="400" height="400">
+      <p>{{ "Moose count: " + count }}</p>
+      <button v-on:click="count++">Count moose</button>
+    </div>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script>
+      const app = Vue.createApp({
+        data() {
+          return {
+            count: 0
+          }
+        }
+      })
+       app.mount('#app')
+    </script>
+  </body>
+</html>
