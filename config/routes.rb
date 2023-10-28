@@ -16,5 +16,6 @@ Rails.application.routes.draw do
   get "v_show", to: "exercises_#v_show", as: "v_show"
   get "v_for", to: "exercises_#v_for", as: "v_for"
   get "events", to: "exercises_#events", as: "events"
+  get "v_on", to: "exercises_#v_on", as: "v_on"
 
 end

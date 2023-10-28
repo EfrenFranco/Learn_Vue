@@ -8,13 +8,4 @@ def new
   @exercise = Exercise.new
 end
 
-  def intro
-
-  end
-
-  def directive
-  end
-
-  def v_bind
-  end
 end
