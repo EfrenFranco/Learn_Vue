@@ -58,5 +58,21 @@
       })
        app.mount('#app')
     </script>
+    <%# Second exercise from here %>
+    <div id="app2" style="margin-top: 24px;">
+      <input type="text" v-on:input="inpCount++" placeholder="Type something">
+      <p>{{ 'Input events occured: '+inpCount }}</p>
+    </div>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script>
+      const app2 = Vue.createApp({
+        data() {
+          return {
+            inpCount: 0
+          }
+        }
+      })
+       app2.mount('#app2')
+    </script>
   </body>
 </html>
