@@ -18,5 +18,6 @@ Rails.application.routes.draw do
   get "events", to: "exercises_#events", as: "events"
   get "v_on", to: "exercises_#v_on", as: "v_on"
   get "method", to: "exercises_#method", as: "method"
+  get "event_modifier", to: "exercises_#event_modifier", as: "event_modifier"
 
 end
