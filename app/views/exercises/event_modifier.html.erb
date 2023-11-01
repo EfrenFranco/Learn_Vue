@@ -8,6 +8,16 @@
         width: 200px;
         padding: 0 20px 20px 20px;
       }
+
+      /* style for app2 here */
+          #app2 {
+      border: black dashed 1px;
+      width: 200px;
+      padding: 0 20px 20px 20px;
+          }
+          #green {
+      background-color: lightgreen;
+          }
     </style>
   </head>
   <body>
@@ -26,6 +36,30 @@
         }
       })
        app.mount('#app')
+    </script>
+    <%# Second app from here %>
+    <h1>Example: Find The Keyboard Key Value</h1>
+    <div id="app2">
+      <p>Start writing inside the text box to record the key value:</p>
+      <input type="text" v-on:keydown="getKey">
+      <p id="green">{{ keyValue }}</p>
+    </div>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script>
+      const app2 = Vue.createApp({
+        data() {
+          return {
+            keyValue: ''
+          }
+        },
+        methods: {
+          getKey(evt) {
+            this.keyValue = evt.key
+            console.log(evt.key)
+          }
+        }
+      })
+       app2.mount('#app2')
     </script>
   </body>
 </html>
