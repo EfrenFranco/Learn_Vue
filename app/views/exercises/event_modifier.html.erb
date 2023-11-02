@@ -18,6 +18,18 @@
           #green {
       background-color: lightgreen;
           }
+          /* style for app3 */
+          #app3 {
+      border: black dashed 1px;
+      width: 200px;
+      padding: 20px;
+          }
+          #app3 > div {
+      width: 160px;
+      padding: 20px;
+      cursor: default;
+      font-weight: bold;
+      }
     </style>
   </head>
   <body>
@@ -60,6 +72,30 @@
         }
       })
        app2.mount('#app2')
+    </script>
+    <%# Third app from here %>
+    <h1>Example</h1>
+    <p>Left click with the mouse and hold down the 'ctrl' key to change color in the DIV element.</p>
+    <div id="app3">
+      <div v-on:click.left.ctrl="changeColor" v-bind:style="{ backgroundColor:'hsl('+bgColor+',80%,80%)' }">
+        <p>Press 'ctrl' key and left click here.</p>
+      </div>
+    </div>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script>
+      const app3 = Vue.createApp({
+        data() {
+          return {
+            bgColor : 0
+          }
+        },
+        methods: {
+          changeColor() {
+            this.bgColor+=50;
+          }
+        }
+      })
+       app3.mount('#app3')
     </script>
   </body>
 </html>
