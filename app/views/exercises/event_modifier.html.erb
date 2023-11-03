@@ -30,6 +30,23 @@
       cursor: default;
       font-weight: bold;
       }
+
+
+      #app4 {
+      border: black dashed 1px;
+      width: 200px;
+      padding: 0 20px 20px 20px;
+          }
+          #app4 > div {
+      width: 160px;
+      background-color: lightcoral;
+      padding: 20px;
+          }
+          #app4 span {
+      color: black;
+      font-weight: bold;
+      font-family: 'Courier New', Courier, monospace;
+          }
     </style>
   </head>
   <body>
@@ -96,6 +113,23 @@
         }
       })
        app3.mount('#app3')
+    </script>
+    <%# Fourth app from here %>
+    <h1>Example: 'S' Key Generates Alert</h1>
+    <div id="app4">
+      <p>The 'S' key generates an alert:</p>
+      <textarea cols="20" rows="3" v-on:keydown.s="createAlert" placeholder="Start writing.."></textarea>
+    </div>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script>
+      const app4 = Vue.createApp({
+        methods: {
+          createAlert(evt) {
+            alert("You pressed the 'S' key!");
+          }
+        }
+      })
+       app4.mount('#app4')
     </script>
   </body>
 </html>
