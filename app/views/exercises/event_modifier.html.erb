@@ -47,6 +47,15 @@
       font-weight: bold;
       font-family: 'Courier New', Courier, monospace;
           }
+
+          #app5 {
+      border: black dashed 1px;
+      width: 200px;
+      padding: 20px;
+          }
+          #app5 > img {
+      width: 100%;
+          }
     </style>
   </head>
   <body>
@@ -130,6 +139,38 @@
         }
       })
        app4.mount('#app4')
+    </script>
+    <%# Fifth app from here %>
+    <h1>Example</h1>
+    <div id="app5">
+      <p>Press the 'Shift' keyboard key while you do a left mouse button click on the image below to change it.</p>
+      <img v-on:click.left.shift="changeImg" v-bind:src="imgUrl">
+    </div>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script>
+      const app5 = Vue.createApp({
+        data() {
+          return {
+            imgUrlIndex : 0,
+            imgUrl: 'img_tiger_square.jpeg',
+            images:  [
+          'img_tiger_square.jpeg',
+          'img_moose_square.jpeg',
+          'img_kangaroo_square.jpeg'
+        ]
+          }
+        },
+        methods: {
+          changeImg() {
+            this.imgUrlIndex++;
+            if(this.imgUrlIndex>=3){
+              this.imgUrlIndex=0
+            }
+            this.imgUrl = this.images[this.imgUrlIndex]
+          }
+        }
+      })
+       app5.mount('#app5')
     </script>
   </body>
 </html>
