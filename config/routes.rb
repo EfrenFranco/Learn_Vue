@@ -19,5 +19,6 @@ Rails.application.routes.draw do
   get "v_on", to: "exercises_#v_on", as: "v_on"
   get "method", to: "exercises_#method", as: "method"
   get "event_modifier", to: "exercises_#event_modifier", as: "event_modifier"
+  get "vue_form", to: "exercises_#vue_form", as: "vue_form"
 
 end
