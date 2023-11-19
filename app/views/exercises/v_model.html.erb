@@ -1,43 +1,91 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Vue Important Checkbox</title>
+    <title>Shopping List 2</title>
     <style>
-      form {
+      #app {
         border: dashed black 1px;
         display: inline-block;
-        padding: 10px;
+        padding: 0 20px;
       }
-      label {
+      #app label {
         padding: 5px;
       }
-      label:hover {
+      #app label:hover {
         cursor: pointer;
         background-color: lightgray;
         border-radius: 5px;
       }
+      ul {
+        list-style-type: none;
+      }
+      li {
+        border-radius: 5px;
+        padding: 5px;
+        margin: 2px;
+        background-color: rgb(211, 254, 211);
+      }
+      .impClass {
+        background-color: rgb(255, 202, 202);
+        font-weight: bold;
+      }
     </style>
   </head>
   <body>
-    <h1>Example: Important Checkbox</h1>
-    <p>This 'important' checkbox is a dynamic form feature that will be added to a shoppinglist form later, but we isolate it here first to easier see how it works.</p>
+    <h1>Example: Shopping List With Important Items</h1>
+    <p>In this version of our shopping list the user can define if an item is important. The checkbox is more dynamic because the 'true' or 'false' text changes to show the status when the user checks it.</p>
     <div id="app">
-      <form>
+      <form v-on:submit.prevent="addItem">
         <p>
-          Important item?
+          What do you need? <br>
+          <input type="text" required placeholder="item name.." v-model="itemName">
+        </p>
+        <p>
+          How many? <br>
+          <input type="number" placeholder="number of items.." v-model="itemNumber">
+        </p>
+        <p>
+          Important?
           <label>
-            <input type="checkbox" v-model="important">
-            {{ important }}
+            <input type="checkbox" v-model="itemImportant">
+            {{ itemImportant }}
           </label>
         </p>
+        <button type="submit">Add item</button>
       </form>
+      <br>
+      <hr>
+      <div>
+        <p><strong>Shopping list:</strong></p>
+        <ul>
+          <li v-for="item in shoppingList" v-bind:class="{ impClass: item.important }">{{ item.name }}, {{ item.number}}</li>
+        </ul>
+      </div>
     </div>
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <script>
       const app = Vue.createApp({
         data() {
           return {
-            important: false
+            itemName: null,
+            itemNumber: null,
+            itemImportant: false,
+            shoppingList: [
+              { name: 'Tomatoes', number: 5, important: false }
+            ]
+          }
+        },
+        methods: {
+          addItem(){
+            let item = {
+              name: this.itemName,
+              number: this.itemNumber,
+              important: this.itemImportant
+            }
+            this.shoppingList.push(item)
+            this.itemName = null
+            this.itemNumber = null
+            this.itemImportant = false
           }
         }
       })
