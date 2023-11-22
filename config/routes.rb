@@ -21,5 +21,6 @@ Rails.application.routes.draw do
   get "event_modifier", to: "exercises_#event_modifier", as: "event_modifier"
   get "vue_form", to: "exercises_#vue_form", as: "vue_form"
   get "v_model", to: "exercises_#v_model", as: "v_model"
+  get "css_binding", to: "exercises_#css_binding", as: "css_binding"
 
 end
