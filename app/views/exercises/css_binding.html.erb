@@ -1,41 +1,44 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Opacity with v-bind</title>
+    <title>Select images</title>
     <style>
-      #app > div {
-        position: relative;
+      #app {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        width: 80%;
         border: dashed black 1px;
-        width: 200px;
-        height: 100px;
-        background-image: url("img_kangaroo.jpg");
-        background-size: cover;
       }
-      #onTop {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        padding: 20px;
+      #app > div {
+        display: block;
+        flex-basis: 80px;
+        aspect-ratio: 1;
+        margin: 5px;
+      }
+      div > img {
         box-sizing: border-box;
-        z-index: 2;
-        color: white;
+        width: 100%;
+        padding: 3px;
+        border: solid white 4px;
+        border-radius: 5px;
+      }
+      img:hover {
+        cursor: pointer;
+      }
+      .selClass {
+        border: solid brown 4px;
+        background-color: lightpink;
       }
     </style>
   </head>
   <body>
-    <h1>Example: In-line styling</h1>
-    <p>This is an example of in-line styling with Vue (v-bind:style).</p>
-    <p>Drag the range input to change the opacity of the div below.</p>
+    <h1>Example: Selecting images with v-bind:class</h1>
+    <p>This is an example of assigning a class with Vue (v-bind:class).</p>
+    <p>Click on an image to assign or remove the class "selClass".</p>
     <div id="app">
-      <p>
-        <input type="range" min="0" max="1" step="0.1" v-model="opacityVal"> {{opacityVal}} (opacity value)
-      </p>
-      <div>
-        <div id="onTop" v-bind:style="{ backgroundColor: 'rgba(99,0,89,'+opacityVal+')' }">
-          Drag the range input to change opacity here.
-        </div>
+      <div v-for="(img, index) in images">
+        <img v-bind:src="img.url" v-on:click="select(index)" v-bind:class="{selClass: img.sel}">
       </div>
     </div>
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
@@ -43,7 +46,20 @@
       const app = Vue.createApp({
         data() {
           return {
-            opacityVal: 0.8
+            images: [
+              {url: 'img_burrito.svg', sel: false},
+              {url: 'img_salad.svg', sel: false},
+              {url: 'img_cake.svg', sel: false},
+              {url: 'img_soup.svg', sel: false},
+              {url: 'img_fish.svg', sel: false},
+              {url: 'img_pizza.svg', sel: false},
+              {url: 'img_rice.svg', sel: false}
+            ]
+          }
+        },
+        methods: {
+          select(number) {
+            this.images[number].sel = !this.images[number].sel
           }
         }
       })
