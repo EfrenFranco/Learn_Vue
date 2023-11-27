@@ -22,5 +22,5 @@ Rails.application.routes.draw do
   get "vue_form", to: "exercises_#vue_form", as: "vue_form"
   get "v_model", to: "exercises_#v_model", as: "v_model"
   get "css_binding", to: "exercises_#css_binding", as: "css_binding"
-
+  get "computed", to: "exercises_#computed", as: "computed"
 end
