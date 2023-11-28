@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Moose count</title>
+    <title>yes or no</title>
     <style>
       form {
         border: dashed black 1px;
@@ -19,15 +19,15 @@
     </style>
   </head>
   <body>
-    <h1>Example: Data Property 'true' or 'false'</h1>
-    <p>This is a responsive form feature made with Vue that gives feedback 'true' or 'false' when the user checks the checkbox.</p>
+    <h1>Example: Computed Property 'yes' or 'no'</h1>
+    <p>In this example we give the user feedback 'yes' or 'no' when the checkbox is toggled. Feedback 'yes' or 'no' fits better with our everyday language than 'true' or 'false', and we use a computed property in this example to achieve this.</p>
     <div id="app">
       <form>
         <p>
           Important item?
           <label>
             <input type="checkbox" v-model="chbxVal">
-            {{ chbxVal }}
+            {{ isImportant }}
           </label>
         </p>
       </form>
@@ -38,6 +38,16 @@
         data() {
           return {
             chbxVal: false
+          }
+        },
+        computed: {
+          isImportant() {
+            if(this.chbxVal){
+              return 'yes'
+            }
+            else {
+              return 'no'
+            }
           }
         }
       })
