@@ -23,4 +23,6 @@ Rails.application.routes.draw do
   get "v_model", to: "exercises_#v_model", as: "v_model"
   get "css_binding", to: "exercises_#css_binding", as: "css_binding"
   get "computed", to: "exercises_#computed", as: "computed"
+  get "watcher", to: "exercises_#watcher", as: "watcher"
+
 end
