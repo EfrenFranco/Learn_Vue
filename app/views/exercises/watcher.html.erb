@@ -30,6 +30,28 @@
       font-weight: bold;
       text-align: center;
           }
+
+       #app3 {
+      border: dashed black 1px;
+      width: 200px;
+      padding: 0 10px 10px 10px;
+          }
+          #app3 > div {
+      width: 200px;
+      height: 50px;
+      border: solid black 1px;
+      background-color: lightgreen;
+          }
+          #app3 > p {
+      font-size: large;
+      font-weight: bold;
+          }
+          .valid {
+      color: green;
+          }
+          .invalid {
+      color: red;
+          }
     </style>
   </head>
   <body>
@@ -89,6 +111,41 @@
         }
       })
        app2.mount('#app2')
+    </script>
+    <div id="app3">
+      <label>
+        <p>Type a valid e-mail address:</p>
+        <input type="email" v-model="inpAddress">
+      </label>
+      <p v-bind:class="myClass"><code>{{ feedbackText }}</code></p>
+    </div>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script>
+      const app3 = Vue.createApp({
+        data() {
+          return {
+            inpAddress: '',
+            feedbackText: '',
+            myClass: 'invalid'
+          }
+        },
+        watch: {
+          inpAddress(newVal,oldVal) {
+            if(!newVal.includes('@')){
+              this.feedbackText = 'The e-mail address is NOT valid';
+              this.myClass = 'invalid';
+            }
+            else if(!oldVal.includes('@') && newVal.includes('@')) {
+              this.feedbackText = 'Perfect! You fixed it!';
+              this.myClass = 'valid'
+            }
+            else {
+              this.feedbackText = 'The e-mail address is valid :)';
+            }
+          }
+        }
+      })
+       app3.mount('#app3')
     </script>
   </body>
 </html>
