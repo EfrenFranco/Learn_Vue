@@ -24,5 +24,5 @@ Rails.application.routes.draw do
   get "css_binding", to: "exercises_#css_binding", as: "css_binding"
   get "computed", to: "exercises_#computed", as: "computed"
   get "watcher", to: "exercises_#watcher", as: "watcher"
-
+  get "template", to: "exercises_#template", as: "template"
 end
