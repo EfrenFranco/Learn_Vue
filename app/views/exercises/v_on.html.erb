@@ -35,6 +35,21 @@
         border-radius: 50%;
         background-color: yellow;
       }
+
+
+          #app3 {
+      border: dashed black 1px;
+      width: 350px;
+      padding: 0 20px;
+          }
+          #app3 > div {
+      width: 200px;
+      height: 80px;
+          }
+          #app3 span {
+      font-weight: bold;
+      font-family: 'Courier New', Courier, monospace;
+          }
     </style>
   </head>
   <body>
@@ -73,6 +88,25 @@
         }
       })
        app2.mount('#app2')
+    </script>
+    <%# Third app from here %>
+    <h1>Example: Change Color</h1>
+    <div id="app3">
+      <p>Move the mouse pointer over the box below to change the background-color randomly with hsl color code.</p>
+      <p> <strong>Caution</strong>: <u>The rapid color change may be too unsafe to those with certain conditions.</u></p>
+      <div v-on:mousemove=" colorVal = Math.floor(Math.random()*360) " v-bind:style=" {backgroundColor: 'hsl('+colorVal+',60%,60%)'} "></div>
+      <p><span>backgroundColor: hsl(<strong>{{ colorVal }}</strong>, 80%, 80%)</span></p>
+    </div>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script>
+      const app3 = Vue.createApp({
+        data() {
+          return {
+            colorVal: 50
+          }
+        }
+      })
+       app3.mount('#app3')
     </script>
   </body>
 </html>
