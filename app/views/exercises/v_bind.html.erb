@@ -9,6 +9,18 @@
         border: dashed black 1px;
         background-color: lightcoral;
       }
+
+
+          #app2 > div {
+      margin: 10px;
+      padding: 10px;
+      border: solid black 1px;
+      display: inline-block;
+          }
+
+          #app2 > .pinkBG{
+      background-color: lightpink;
+          }
     </style>
   </head>
   <body>
@@ -27,6 +39,22 @@
        }
       })
       app.mount('#app')
+    </script>
+    <div id="app2">
+      <p>Everything inside the div emelent with id="app" can use data from the Vue instance.</p>
+      <div v-bind:class="vueClass">This element is bound to the "pinkBG" class.</div>
+    </div>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script>
+      const app2 = Vue.createApp({
+       data() {
+        return {
+         vueClass: "pinkBG"
+        }
+       }
+      })
+
+      app2.mount('#app2')
     </script>
   </body>
 </html>
