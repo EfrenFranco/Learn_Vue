@@ -21,6 +21,13 @@
           #app2 > .pinkBG{
       background-color: lightpink;
           }
+
+            #app3 > div {
+      width: 200px;
+      padding: 20px;
+      border: dashed black 1px;
+      background-color: lightcoral;
+          }
     </style>
   </head>
   <body>
@@ -55,6 +62,22 @@
       })
 
       app2.mount('#app2')
+    </script>
+    <h1>'v-bind' Font Size Example</h1>
+    <p>The browser sets the font-size in pixels based on the 'size' number value in the Vue instance.</p>
+    <div id="app3">
+      <div v-bind:style="{ fontSize: size + 'px' }">Text example</div>
+    </div>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script>
+      const app3 = Vue.createApp({
+       data() {
+        return {
+          size: 28
+        }
+       }
+      })
+      app3.mount('#app3')
     </script>
   </body>
 </html>
